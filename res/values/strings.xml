@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Response Generator</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="Neutral">
+        <item>Reply hazy try again</item>
+        <item>I don\'t know I\'m a phone</item>
+        <item>Ask again later</item>
+        <item>You will have to wait</item>
+        <item>Who knows</item>
+        <item>Better not tell you now</item>
+        <item>Cannot predict now</item>
+        <item>Concentrate and ask again</item>
+        <item>Ask again at a later time</item>
+    </string-array>
+	<string-array name="Positive">
+	    <item>Perhaps</item>
+	    <item>Probably</item>
+	    <item>Yes, in due time</item>
+        <item>Signs point to yes</item>
+        <item>Yes</item>
+        <item>Looks good to me!</item>
+        <item>Outlook good</item>
+        <item>Most likely</item>
+        <item>As I see it, yes</item>
+        <item>You may rely on it</item>
+        <item>Looking good</item>
+        <item>Go for it</item>
+        <item>Yes definitely</item>
+        <item>Without a doubt</item>
+        <item>It is decidedly so</item>
+        <item>It is certain</item>
+    </string-array>
+    <string-array name="Negative">
+        <item>Does not seem likely</item>
+        <item>Don\'t count on it</item>
+        <item>Don\'t bet on it</item>
+        <item>I have my doubts</item>
+        <item>Forget about it</item>
+        <item>My reply is no</item>
+        <item>My sources say no</item>
+        <item>Outlook not so good</item>
+        <item>No, I do not think so</item>
+        <item>Very doubtful</item>
+        <item>Definitely not</item>
+        <item>Are you kidding</item>
+        <item>Just no</item>
+    </string-array>
+</resources>
