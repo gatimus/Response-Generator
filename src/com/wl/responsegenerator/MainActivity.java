@@ -1,10 +1,7 @@
 package com.wl.responsegenerator;
 
-import java.util.Random;
-
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,9 +13,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
 	
 	private Button btnGenerate;
 	private TextView result;
-	private String[] neutral;
-	private String[] positive;
-	private String[] negative;
+	private Generator generator;
 	
 
 	@Override
@@ -28,9 +23,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
 		btnGenerate = (Button) findViewById(R.id.button1);
 		btnGenerate.setOnClickListener(this);
 		result = (TextView) findViewById(R.id.textView1);
-		neutral = getResources().getStringArray(R.array.Neutral);
-		positive = getResources().getStringArray(R.array.Positive);
-		negative = getResources().getStringArray(R.array.Negative);
+		generator = new Generator(this);
 	}
 
 	@Override
@@ -52,55 +45,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public int generate() {
-		Random random = new Random();
-		double percent = 0.5D;
-		double deviation = 0D;
-		int n = 10_000;
-		int positive = 0;
-		for (int i = 0; i < n; i++) {
-			if(random.nextBoolean()) positive ++;
-		}
-		percent = (double)positive/n;
-		deviation = 0.5D - percent;
-		deviation = deviation*1000D;
-		return (int)deviation;
-	}
-	
-	public String generateResponse() {
-		int select = generate();
-		String response = null;
-		try{
-		if(Math.abs(select)<neutral.length){
-			response = neutral[Math.abs(select)];
-		}
-		else if(select>0){
-			if(select<neutral.length+positive.length){
-				response = positive[Math.abs(select)-neutral.length];
-			}
-			else{
-				response = positive[positive.length-1];
-			}
-		}
-		else if(select<0){
-			if(Math.abs(select)<neutral.length+negative.length){
-				response = negative[Math.abs(select)-neutral.length];
-			}
-			else{
-				response = negative[negative.length-1];
-			}
-		}
-		}
-		catch(ArrayIndexOutOfBoundsException e){
-			Log.e("index",String.valueOf(select));
-		}
-		return response;
-	}
-
 	@Override
 	public void onClick(View v) {
-		
-		result.setText(generateResponse());
+		result.setText(generator.generateResponse());
 	}
 	
 }
