@@ -2,11 +2,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.wl.responsegenerator.MainActivity" >
-
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
+    <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
-        app:showAsAction="never"/>
+        android:visible="true"
+        android:enabled="true"
+        android:orderInCategory="1"
+        android:icon="@drawable/ic_action_settings"
+        android:showAsAction="always" />
+    <item android:id="@+id/action_about"
+        android:title="@string/action_about"
+        android:visible="true"
+        android:enabled="true"
+        android:orderInCategory="2"
+        android:icon="@drawable/ic_action_about"
+        android:showAsAction="always" />
+    <item android:id="@+id/action_help"
+        android:title="@string/action_help"
+        android:visible="true" android:enabled="true"
+        android:orderInCategory="3"
+        android:icon="@drawable/ic_action_help"
+        android:showAsAction="always" />
+    <item android:id="@+id/action_quit"
+        android:title="@string/action_quit"
+        android:visible="true"
+        android:enabled="true"
+        android:orderInCategory="4" 
+        android:icon="@drawable/ic_action_cancel"
+        android:showAsAction="always" />
 
 </menu>

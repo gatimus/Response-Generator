@@ -34,8 +34,17 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		switch(id){
+		case R.id.action_settings :
+			break;
+		case R.id.action_about :
+			break;
+		case R.id.action_help :
+			break;
+		case R.id.action_quit : System.exit(0);
+			break;
+		default : 
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	} //onOptionsItemSelected(MenuItem item)

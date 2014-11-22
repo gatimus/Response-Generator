@@ -336,7 +336,12 @@ int drawable abc_textfield_default_mtrl_alpha 0x7f02002f
 int drawable abc_textfield_search_activated_mtrl_alpha 0x7f020030
 int drawable abc_textfield_search_default_mtrl_alpha 0x7f020031
 int drawable abc_textfield_search_material 0x7f020032
-int drawable ic_launcher 0x7f020033
+int drawable ic_action_about 0x7f020033
+int drawable ic_action_cancel 0x7f020034
+int drawable ic_action_help 0x7f020035
+int drawable ic_action_settings 0x7f020036
+int drawable ic_launcher 0x7f020037
+int id action_about 0x7f090044
 int id action_bar 0x7f090033
 int id action_bar_activity_content 0x7f090003
 int id action_bar_container 0x7f090032
@@ -345,11 +350,13 @@ int id action_bar_spinner 0x7f090002
 int id action_bar_subtitle 0x7f090021
 int id action_bar_title 0x7f090020
 int id action_context_bar 0x7f090034
+int id action_help 0x7f090045
 int id action_menu_divider 0x7f090005
 int id action_menu_presenter 0x7f090006
 int id action_mode_bar 0x7f090030
 int id action_mode_bar_stub 0x7f09002f
 int id action_mode_close_button 0x7f090022
+int id action_quit 0x7f090046
 int id action_settings 0x7f090043
 int id activity_chooser_view_content 0x7f090023
 int id always 0x7f090014
@@ -447,6 +454,9 @@ int string abc_searchview_description_submit 0x7f0a0009
 int string abc_searchview_description_voice 0x7f0a000a
 int string abc_shareactionprovider_share_with 0x7f0a000e
 int string abc_shareactionprovider_share_with_application 0x7f0a000d
+int string action_about 0x7f0a0012
+int string action_help 0x7f0a0013
+int string action_quit 0x7f0a0014
 int string action_settings 0x7f0a0011
 int string app_name 0x7f0a000f
 int string hello_world 0x7f0a0010
