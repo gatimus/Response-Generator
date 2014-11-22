@@ -12,10 +12,11 @@ public class Generator {
 	private String[] negative;
 	
 	public Generator(Context context) {
+		//context from activity for resources
 		neutral = context.getResources().getStringArray(R.array.Neutral);
 		positive = context.getResources().getStringArray(R.array.Positive);
 		negative = context.getResources().getStringArray(R.array.Negative);
-	}
+	} //constructor
 	
 	public int generateInt() {
 		Random random = new Random();
@@ -30,7 +31,7 @@ public class Generator {
 		deviation = 0.5D - percent;
 		deviation = deviation*1000D;
 		return (int)deviation;
-	}
+	} //generateInt() 10,000 coin flips, returns integer of how far off the results are from 50% to thousandth 
 	
 	public String generateResponse() {
 		int select = generateInt();
@@ -60,6 +61,6 @@ public class Generator {
 			Log.e("index",String.valueOf(select));
 		}
 		return response;
-	}
+	} //enerateResponse() if the result of generateInt() is low a neutral String is returned. If the int is positive and high it will be positive, negative will be negative.
 
-}
+} //class
