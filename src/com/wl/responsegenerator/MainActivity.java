@@ -1,27 +1,39 @@
 package com.wl.responsegenerator;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
 
-public class MainActivity extends ActionBarActivity implements OnClickListener{
+public class MainActivity extends FragmentActivity implements MainFragment.FragmentListener{
 	
-	private Button btnGenerate;
-	private TextView result;
+	FragmentManager fragmentManager;
+	FragmentTransaction fragmentTransaction;
+	private MainFragment mainFragment;
+	private ResponseFragment responseFragment;
 	private Generator generator;
+	private Configuration config;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		btnGenerate = (Button) findViewById(R.id.button1);
-		btnGenerate.setOnClickListener(this);
-		result = (TextView) findViewById(R.id.textView1);
+		config = getResources().getConfiguration();
+		if(config.orientation == Configuration.ORIENTATION_PORTRAIT) {
+			setContentView(R.layout.portrait_layout);
+		}
+		else{
+			setContentView(R.layout.landscape_layout);
+		}
+		fragmentManager = getFragmentManager();
+		//fragmentTransaction = fragmentManager.beginTransaction();
+		mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.fragmentMain);
+		responseFragment = (ResponseFragment) fragmentManager.findFragmentById(R.id.fragmentResponse);
+		//fragmentTransaction.replace(R.id.fragmentMain, mainFragment);
+		//fragmentTransaction.replace(R.id.fragmentResponse, responseFragment);
+		//fragmentTransaction.commit();
 		generator = new Generator(this);
 	} //onCreate(Bundle savedInstanceState)
 
@@ -49,11 +61,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
 		return super.onOptionsItemSelected(item);
 	} //onOptionsItemSelected(MenuItem item)
 	
+
 	@Override
-	public void onClick(View v) {
-		if(v.getId() == btnGenerate.getId()){
-			result.setText(generator.generateResponse());
-		} //if button is clicked generate and display response 
-	} //onClick(View v)
+	public void onButtonClick() {
+		responseFragment.displayResponse(generator.generateResponse());
+	}
 	
 } //class

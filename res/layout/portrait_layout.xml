@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/portrait_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.wl.responsegenerator.MainActivity" >
+
+    <fragment
+        android:id="@+id/fragmentMain"
+        android:name="com.wl.responsegenerator.MainFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_vertical|fill_horizontal|fill"
+        android:layout_weight="1" />
+
+    <fragment
+        android:id="@+id/fragmentResponse"
+        android:name="com.wl.responsegenerator.ResponseFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_vertical|fill_horizontal|fill"
+        android:layout_weight="1" />
+
+</LinearLayout>

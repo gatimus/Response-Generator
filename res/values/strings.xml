@@ -7,6 +7,7 @@
     <string name="action_about">About</string>
     <string name="action_help">Help</string>
     <string name="action_quit">Quit</string>
+
     <string-array name="Neutral">
         <item>Reply hazy try again</item>
         <item>I don\'t know I\'m a phone</item>
@@ -18,10 +19,10 @@
         <item>Concentrate and ask again</item>
         <item>Ask again at a later time</item>
     </string-array>
-	<string-array name="Positive">
-	    <item>Perhaps</item>
-	    <item>Probably</item>
-	    <item>Yes, in due time</item>
+    <string-array name="Positive">
+        <item>Perhaps</item>
+        <item>Probably</item>
+        <item>Yes, in due time</item>
         <item>Signs point to yes</item>
         <item>Yes</item>
         <item>Looks good to me!</item>
@@ -51,4 +52,7 @@
         <item>Are you kidding</item>
         <item>Just no</item>
     </string-array>
+
+    <string name="title_activity_splash">SplashActivity</string>
+
 </resources>
