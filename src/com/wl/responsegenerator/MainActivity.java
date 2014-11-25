@@ -1,7 +1,6 @@
 package com.wl.responsegenerator;
 
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -11,7 +10,6 @@ import android.view.MenuItem;
 public class MainActivity extends FragmentActivity implements MainFragment.FragmentListener{
 	
 	FragmentManager fragmentManager;
-	FragmentTransaction fragmentTransaction;
 	private MainFragment mainFragment;
 	private ResponseFragment responseFragment;
 	private Generator generator;
@@ -28,12 +26,10 @@ public class MainActivity extends FragmentActivity implements MainFragment.Fragm
 			setContentView(R.layout.landscape_layout);
 		}
 		fragmentManager = getFragmentManager();
-		//fragmentTransaction = fragmentManager.beginTransaction();
 		mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.fragmentMain);
+		mainFragment.setRetainInstance(true);
 		responseFragment = (ResponseFragment) fragmentManager.findFragmentById(R.id.fragmentResponse);
-		//fragmentTransaction.replace(R.id.fragmentMain, mainFragment);
-		//fragmentTransaction.replace(R.id.fragmentResponse, responseFragment);
-		//fragmentTransaction.commit();
+		responseFragment.setRetainInstance(true);
 		generator = new Generator(this);
 	} //onCreate(Bundle savedInstanceState)
 
