@@ -1,23 +1,28 @@
 package com.wl.responsegenerator;
 
 import android.app.FragmentManager;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends FragmentActivity implements MainFragment.FragmentListener{
+public class MainActivity extends ActionBarActivity implements MainFragment.FragmentListener{
 	
 	FragmentManager fragmentManager;
 	private MainFragment mainFragment;
 	private ResponseFragment responseFragment;
 	private Generator generator;
 	private Configuration config;
+	public static final String PREFS_NAME = "MyPrefsFile";
+	SharedPreferences pref;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 		config = getResources().getConfiguration();
 		if(config.orientation == Configuration.ORIENTATION_PORTRAIT) {
 			setContentView(R.layout.portrait_layout);
@@ -31,6 +36,7 @@ public class MainActivity extends FragmentActivity implements MainFragment.Fragm
 		responseFragment = (ResponseFragment) fragmentManager.findFragmentById(R.id.fragmentResponse);
 		responseFragment.setRetainInstance(true);
 		generator = new Generator(this);
+		responseFragment.displayResponse(pref.getString("response", "Response Fragment"));
 	} //onCreate(Bundle savedInstanceState)
 
 	@Override
@@ -44,6 +50,9 @@ public class MainActivity extends FragmentActivity implements MainFragment.Fragm
 		int id = item.getItemId();
 		switch(id){
 		case R.id.action_settings :
+			Intent intent = new Intent();
+            intent.setClass(this, SettingsActivity.class);
+            startActivity(intent);
 			break;
 		case R.id.action_about :
 			break;
@@ -61,6 +70,15 @@ public class MainActivity extends FragmentActivity implements MainFragment.Fragm
 	@Override
 	public void onButtonClick() {
 		responseFragment.displayResponse(generator.generateResponse());
+	}
+	
+	@Override
+    protected void onPause(){
+		super.onPause();
+		pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+		SharedPreferences.Editor editor = pref.edit();
+		editor.putString("response", responseFragment.getResponse());
+		editor.commit();
 	}
 	
 } //class

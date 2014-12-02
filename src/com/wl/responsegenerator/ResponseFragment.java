@@ -22,5 +22,9 @@ public class ResponseFragment extends Fragment {
 	public void displayResponse(String s){
 		response.setText(s);
 	}
-
+	
+	public String getResponse(){
+		return response.getText().toString();
+	}
+	
 }
