@@ -9,7 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends ActionBarActivity implements MainFragment.FragmentListener{
+public class MainActivity extends ActionBarActivity implements MainFragment.FragmentListener, Shaker.Callback{
 	
 	FragmentManager fragmentManager;
 	private MainFragment mainFragment;
@@ -18,10 +18,12 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Frag
 	private Configuration config;
 	public static final String PREFS_NAME = "MyPrefsFile";
 	SharedPreferences pref;
+	private Shaker shaker;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		shaker=new Shaker(this, 1.25d, 500, this);
 		pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 		config = getResources().getConfiguration();
 		if(config.orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -79,6 +81,16 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Frag
 		SharedPreferences.Editor editor = pref.edit();
 		editor.putString("response", responseFragment.getResponse());
 		editor.commit();
+	}
+
+	@Override
+	public void shakingStarted() {
+		responseFragment.displayResponse(generator.generateResponse());
+	}
+
+	@Override
+	public void shakingStopped() {
+		// do nothing
 	}
 	
 } //class

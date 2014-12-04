@@ -56,5 +56,7 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_asdf">Asdf</string>
+    <color name="bg1">#DDD</color>
+    <color name="bg2">#AAA</color>
 
 </resources>
