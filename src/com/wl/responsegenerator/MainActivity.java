@@ -6,11 +6,13 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends ActionBarActivity implements MainFragment.FragmentListener, Shaker.Callback{
 	
+	private final String TAG = "Main:";
 	FragmentManager fragmentManager;
 	private MainFragment mainFragment;
 	private ResponseFragment responseFragment;
@@ -22,6 +24,7 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Frag
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Log.i(TAG, "create");
 		super.onCreate(savedInstanceState);
 		shaker=new Shaker(this, 1.25d, 500, this);
 		pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -71,11 +74,13 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Frag
 
 	@Override
 	public void onButtonClick() {
+		Log.i(TAG, "button click");
 		responseFragment.displayResponse(generator.generateResponse());
 	}
 	
 	@Override
     protected void onPause(){
+		Log.i(TAG, "pause");
 		super.onPause();
 		pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 		SharedPreferences.Editor editor = pref.edit();
@@ -85,11 +90,13 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Frag
 
 	@Override
 	public void shakingStarted() {
+		Log.i(TAG, "shaking start");
 		responseFragment.displayResponse(generator.generateResponse());
 	}
 
 	@Override
 	public void shakingStopped() {
+		Log.i(TAG, "shaking stop");
 		// do nothing
 	}
 	

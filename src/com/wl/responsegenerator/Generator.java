@@ -3,26 +3,36 @@ package com.wl.responsegenerator;
 import java.util.Random;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.Toast;
 
 public class Generator {
 	
+	private final String TAG = "Generator:";
 	private String[] neutral;
 	private String[] positive;
 	private String[] negative;
+	SharedPreferences sharedPref;
+	Context context;
 	
 	public Generator(Context context) {
 		//context from activity for resources
 		neutral = context.getResources().getStringArray(R.array.Neutral);
 		positive = context.getResources().getStringArray(R.array.Positive);
 		negative = context.getResources().getStringArray(R.array.Negative);
+		sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+		this.context = context;
 	} //constructor
 	
 	public int generateInt() {
 		Random random = new Random();
 		double percent = 0.5D;
 		double deviation = 0D;
-		int n = 10_000;
+		//int n = 10_000;
+		int n = Integer.valueOf(sharedPref.getString("coin_flip", "10000"));
+		Log.i(TAG, "Fliping " + String.valueOf(n) + " coin(s)");
 		int positive = 0;
 		for (int i = 0; i < n; i++) {
 			if(random.nextBoolean()) positive ++;
@@ -58,8 +68,10 @@ public class Generator {
 		}
 		}
 		catch(ArrayIndexOutOfBoundsException e){
-			Log.e("index",String.valueOf(select));
+			Log.e(TAG,String.valueOf(select));
 		}
+		Toast.makeText(context, "New Response", Toast.LENGTH_LONG).show();
+		Log.i(TAG, "New Response: " + response);
 		return response;
 	} //enerateResponse() if the result of generateInt() is low a neutral String is returned. If the int is positive and high it will be positive, negative will be negative.
 

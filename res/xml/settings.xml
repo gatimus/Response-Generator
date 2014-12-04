@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-    <EditTextPreference android:title="Setting1" android:key="Setting1" android:summary="Setting1"/>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:key="pref_screen">
+    <EditTextPreference android:title="Number of Coin Flips to Generate Response" android:key="coin_flip" android:summary="10000" android:numeric="integer" android:enabled="true" android:defaultValue="10000"/>
 </PreferenceScreen>
