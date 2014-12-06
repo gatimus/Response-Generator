@@ -58,7 +58,7 @@
     <string name="title_activity_asdf">Asdf</string>
     <color name="bg1">#DDD</color>
     <color name="bg2">#AAA</color>
-    <string name="about_msg">This app simulates fliping X number of coins (10,000 defualt). Then determines a response based on how far off the number of heads the coin filps produced was from 50%.</string>
+    <string name="about_msg">This app simulates flipping X number of coins (10,000 default). Then determines a response based on how far off the number of heads the coin flips produced was from 50%.</string>
     <string name="help_msg">Ask your question out loud or type it in. Then press \'Submit\' or shake your device to generate a response.</string>
 
 </resources>

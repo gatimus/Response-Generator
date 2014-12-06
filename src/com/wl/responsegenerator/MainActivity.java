@@ -30,7 +30,7 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Frag
 	protected void onCreate(Bundle savedInstanceState) {
 		Log.i(TAG, "create");
 		super.onCreate(savedInstanceState);
-		shaker=new Shaker(this, 1.25d, 500, this);
+		shaker=new Shaker(this, 1.5d, 500, this);
 		pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 		config = getResources().getConfiguration();
 		if(config.orientation == Configuration.ORIENTATION_PORTRAIT) {
