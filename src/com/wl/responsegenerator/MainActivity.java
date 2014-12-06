@@ -1,5 +1,7 @@
 package com.wl.responsegenerator;
 
+import android.app.DialogFragment;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,14 +15,16 @@ import android.view.MenuItem;
 public class MainActivity extends ActionBarActivity implements MainFragment.FragmentListener, Shaker.Callback{
 	
 	private final String TAG = "Main:";
-	FragmentManager fragmentManager;
-	private MainFragment mainFragment;
-	private ResponseFragment responseFragment;
+	private FragmentManager fragmentManager;
+	private Fragment mainFragment;
+	private Fragment responseFragment;
 	private Generator generator;
 	private Configuration config;
 	public static final String PREFS_NAME = "MyPrefsFile";
-	SharedPreferences pref;
+	private SharedPreferences pref;
 	private Shaker shaker;
+	private DialogFragment aDialog;
+	private DialogFragment hDialog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,10 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Frag
 		responseFragment = (ResponseFragment) fragmentManager.findFragmentById(R.id.fragmentResponse);
 		responseFragment.setRetainInstance(true);
 		generator = new Generator(this);
-		responseFragment.displayResponse(pref.getString("response", "Response Fragment"));
+		((ResponseFragment)responseFragment).displayResponse(pref.getString("response", ""));
+		((MainFragment)mainFragment).setQuestion(pref.getString("question", ""));
+		aDialog = new AboutDialog();
+		hDialog = new HelpDialog();
 	} //onCreate(Bundle savedInstanceState)
 
 	@Override
@@ -55,13 +62,12 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Frag
 		int id = item.getItemId();
 		switch(id){
 		case R.id.action_settings :
-			Intent intent = new Intent();
-            intent.setClass(this, SettingsActivity.class);
+			Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
 			break;
-		case R.id.action_about :
+		case R.id.action_about : aDialog.show(fragmentManager, "About");
 			break;
-		case R.id.action_help :
+		case R.id.action_help : hDialog.show(fragmentManager, "Help");
 			break;
 		case R.id.action_quit : System.exit(0);
 			break;
@@ -75,7 +81,7 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Frag
 	@Override
 	public void onButtonClick() {
 		Log.i(TAG, "button click");
-		responseFragment.displayResponse(generator.generateResponse());
+		((ResponseFragment)responseFragment).displayResponse(generator.generateResponse());
 	}
 	
 	@Override
@@ -84,14 +90,15 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Frag
 		super.onPause();
 		pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 		SharedPreferences.Editor editor = pref.edit();
-		editor.putString("response", responseFragment.getResponse());
+		editor.putString("response", ((ResponseFragment)responseFragment).getResponse());
+		editor.putString("question", ((MainFragment)mainFragment).getQuestion());
 		editor.commit();
 	}
 
 	@Override
 	public void shakingStarted() {
 		Log.i(TAG, "shaking start");
-		responseFragment.displayResponse(generator.generateResponse());
+		((ResponseFragment)responseFragment).displayResponse(generator.generateResponse());
 	}
 
 	@Override

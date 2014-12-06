@@ -6,9 +6,16 @@
     android:orientation="vertical" >
 
     <TextView
+        android:id="@+id/responseTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Response:"
+        android:textSize="@dimen/abc_text_size_title_material" />
+
+    <TextView
         android:id="@+id/responseView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="response fragment" />
+        android:hint="--" />
 
 </LinearLayout>

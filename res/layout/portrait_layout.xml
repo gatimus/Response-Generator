@@ -15,7 +15,7 @@
         android:name="com.wl.responsegenerator.MainFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="fill_vertical|fill_horizontal|fill"
+        android:layout_gravity="center"
         android:layout_weight="1" />
 
     <fragment
@@ -23,7 +23,7 @@
         android:name="com.wl.responsegenerator.ResponseFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="fill_vertical|fill_horizontal|fill"
+        android:layout_gravity="center"
         android:layout_weight="1" />
 
 </LinearLayout>

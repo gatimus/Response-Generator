@@ -9,12 +9,25 @@
         android:id="@+id/responseView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="main fragment" />
+        android:text="Question:"
+        android:textSize="@dimen/abc_text_size_title_material" />
+
+    <EditText
+        android:id="@+id/etQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="(optional)"
+        android:imeOptions="actionGo|actionDone"
+        android:inputType="textCapSentences|textAutoComplete|textMultiLine" >
+
+        <requestFocus />
+    </EditText>
 
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Submit" />
 
 </LinearLayout>

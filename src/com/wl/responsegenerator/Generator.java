@@ -70,7 +70,7 @@ public class Generator {
 		catch(ArrayIndexOutOfBoundsException e){
 			Log.e(TAG,String.valueOf(select));
 		}
-		Toast.makeText(context, "New Response", Toast.LENGTH_LONG).show();
+		Toast.makeText(context, "New Response", Toast.LENGTH_SHORT).show();
 		Log.i(TAG, "New Response: " + response);
 		return response;
 	} //enerateResponse() if the result of generateInt() is low a neutral String is returned. If the int is positive and high it will be positive, negative will be negative.

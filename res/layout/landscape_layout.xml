@@ -13,17 +13,15 @@
     <fragment
         android:id="@+id/fragmentMain"
         android:name="com.wl.responsegenerator.MainFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="fill_vertical|fill_horizontal|fill"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1" />
 
     <fragment
         android:id="@+id/fragmentResponse"
         android:name="com.wl.responsegenerator.ResponseFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="fill_vertical|fill_horizontal|fill"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1" />
 
 </LinearLayout>
